@@ -53,6 +53,13 @@ class SearchBar extends Component {
   }
 }
 
+// Here we don't need to pass state via connect to this component.
+// Therfor we don't need to use mapStateToProps
+// We only need to pass the action creator.
+// If we want to pass only the action creator, we use mapDispatchToProps
+
+// Now there are different ways we can do so:
+
 /* ============================================================
 SOLOUTION 1 - Using mapDispatchToProps and bindActionCreators
 ============================================================= */
@@ -65,43 +72,24 @@ SOLOUTION 1 - Using mapDispatchToProps and bindActionCreators
 //   mapDispatchToProps
 // )(SearchBar);
 
-/* ============================================================
-SOLOUTION 2 - Using mapStateToProps and mapDispatchToProps
-============================================================= */
-// const mapStateToProps = state => ({
-//   photos: state.photos
-// });
+/* ===================================================================
+SOLOUTION 2 - Passing action creator as an object. 
+It's like you are using mapDispatchToProps and is the recommended way
+=================================================================== */
+export default connect(
+  null,
+  { fetchPhotos }
+)(SearchBar);
 
+/* ============================================================
+SOLOUTION 3 - Using mapDispatchToProps with an argument
+============================================================= */
 // const mapDispatchToProps = dispatch => ({
 //   fetchPhotos: term => dispatch(fetchPhotos(term))
 //   // ...Other actions from other files
 // });
 
 // export default connect(
-//   mapStateToProps,
+//   null,
 //   mapDispatchToProps
 // )(SearchBar);
-
-/* =========================================
-SOLOUTION 3 - Using mapStateToProps only
-========================================= */
-// function mapStateToProps(state) {
-//   return { photos: state.photos };
-// }
-
-// export default connect(
-//   mapStateToProps,
-//   { fetchPhotos }
-// )(SearchBar);
-
-/* =========================================
-SOLOUTION 4 - Using mapStateToProps only
-========================================= */
-function mapStateToProps(photos) {
-  return { photos };
-}
-
-export default connect(
-  mapStateToProps,
-  { fetchPhotos }
-)(SearchBar);

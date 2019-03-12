@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
-import rootReducer from "./reducers/photoReducer";
+import rootReducer from "./reducers";
 
 // This way we can add all our middleares to just an array
 const middleware = [thunk];
