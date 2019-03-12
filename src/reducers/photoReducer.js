@@ -1,29 +1,14 @@
-// 1st Reducer
-export function hasError(state = false, action) {
-  switch (action.type) {
-    case "HAS_ERRORED":
-      return action.hasError;
-    default:
-      return state;
-  }
-}
+import { FETCH_PHOTOS } from "../actions/types";
 
-// 2nd Reducer
-export function isLoading(state = false, action) {
+export default (state = [], action) => {
   switch (action.type) {
-    case "IS_LOADING":
-      return action.isLoading;
-    default:
-      return state;
-  }
-}
+    case FETCH_PHOTOS:
+      return action.payload;
 
-// 3rd Reducer
-export function photos(state = [], action) {
-  switch (action.type) {
-    case "FETCH_DATA_SUCCESS":
-      return action.photos;
+    // If you want add result of each search to previous result, use this
+    // return [...state, ...action.payload];
+
     default:
       return state;
   }
-}
+};

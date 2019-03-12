@@ -5,9 +5,7 @@ const SinglePhoto = props => {
 
   return (
     <li className="masonry_item">
-      {/* <div> */}
       <img src={url} alt={alt} className="masonry_item_img" />
-      {/* </div> */}
     </li>
   );
 };
